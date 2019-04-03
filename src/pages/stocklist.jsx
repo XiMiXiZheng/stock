@@ -31,19 +31,19 @@ export default class StockList extends React.PureComponent {
     {
       title: "PE(TTM)",
       dataIndex: "pe",
-      sorter: (a, b) => a.pe > b.pe,
+      sorter: (a, b) => a.pe - b.pe,
       sortDirections: ["descend", "ascend"]
     },
     {
       title: "ROE(摊薄)",
       dataIndex: "ROE",
-      sorter: (a, b) => a.ROE > b.ROE,
+      sorter: (a, b) => a.ROE - b.ROE,
       sortDirections: ["descend", "ascend"]
     },
     {
       title: "ROE(加权平均)",
       dataIndex: "ROEW",
-      sorter: (a, b) => a.ROEW > b.ROEW,
+      sorter: (a, b) => a.ROEW - b.ROEW,
       sortDirections: ["descend", "ascend"]
     }
   ];
@@ -58,9 +58,13 @@ export default class StockList extends React.PureComponent {
     let tabItems = [];
     for (const industry in this.state.industries) {
       tabItems.push(
-        <Tabs.TabPane key={industry} tab={industry} style={{
-            height:"calc(100vh - 45px)"
-        }}>
+        <Tabs.TabPane
+          key={industry}
+          tab={industry}
+          style={{
+            height: "calc(100vh - 45px)"
+          }}
+        >
           {this.renderTable(industry, this.state.industries[industry])}
         </Tabs.TabPane>
       );
@@ -84,7 +88,7 @@ export default class StockList extends React.PureComponent {
       <div
         style={{
           height: "calc(100vh - 0px)",
-          overflow: "hidden",
+          overflow: "hidden"
         }}
       >
         <Tabs>{this.renderTabItem()}</Tabs>
