@@ -18,33 +18,39 @@ export default class StockList extends React.PureComponent {
   columns = [
     {
       title: "股票代码",
-      dataIndex: "stockId"
+      dataIndex: "stockId",
+      width: 100
     },
     {
       title: "股票名称",
-      dataIndex: "stockName"
+      dataIndex: "stockName",
+      width: 100
     },
     {
       title: "行业",
-      dataIndex: "industry"
+      dataIndex: "industry",
+      width: 100
     },
     {
       title: "PE(TTM)",
       dataIndex: "pe",
       sorter: (a, b) => a.pe - b.pe,
-      sortDirections: ["descend", "ascend"]
+      sortDirections: ["descend", "ascend"],
+      width: 100
     },
     {
       title: "ROE(摊薄)",
       dataIndex: "ROE",
       sorter: (a, b) => a.ROE - b.ROE,
-      sortDirections: ["descend", "ascend"]
+      sortDirections: ["descend", "ascend"],
+      width: 100
     },
     {
       title: "ROE(加权平均)",
       dataIndex: "ROEW",
       sorter: (a, b) => a.ROEW - b.ROEW,
-      sortDirections: ["descend", "ascend"]
+      sortDirections: ["descend", "ascend"],
+      width: 100
     }
   ];
 
@@ -78,7 +84,7 @@ export default class StockList extends React.PureComponent {
         columns={this.columns}
         dataSource={stocks}
         pagination={false}
-        // scroll={{ y: "calc(100% - 300px)" }}
+        scroll={{ y: document.body.clientHeight - 150 }}
       />
     );
   };
