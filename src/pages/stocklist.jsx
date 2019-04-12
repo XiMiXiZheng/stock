@@ -1,6 +1,6 @@
 import React from "react";
 import { Tabs, Table } from "antd";
-import jsonResponse from "./json/20190403.json";
+import jsonResponse from "./json/20190412.json";
 import { groupBy } from "lodash";
 
 export default class StockList extends React.PureComponent {
@@ -24,6 +24,16 @@ export default class StockList extends React.PureComponent {
     {
       title: "股票名称",
       dataIndex: "stockName",
+      width: 100
+    },
+    {
+      title: "现价",
+      dataIndex: "lastPrice",
+      width: 100
+    },
+    {
+      title: "每股收益EPS(TTM)",
+      dataIndex: "eps",
       width: 100
     },
     {
