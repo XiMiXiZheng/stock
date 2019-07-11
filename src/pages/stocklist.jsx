@@ -1,6 +1,6 @@
 import React from "react";
 import { Tabs, Table } from "antd";
-import jsonResponse from "./json/20190412.json";
+import jsonResponse from "./json/20190711.json";
 import { groupBy } from "lodash";
 
 export default class StockList extends React.PureComponent {
@@ -19,48 +19,56 @@ export default class StockList extends React.PureComponent {
     {
       title: "股票代码",
       dataIndex: "stockId",
-      width: 100
+      width: "10%"
     },
     {
       title: "股票名称",
       dataIndex: "stockName",
-      width: 100
+      width: "10%"
     },
     {
       title: "现价",
       dataIndex: "lastPrice",
-      width: 100
+      width: "10%"
+    },
+    {
+      title: "预估价",
+      dataIndex: "predictionPrice",
+      width: "10%",
+      render: (text, record, index) => {
+        return record.eps * record.pe;
+      }
     },
     {
       title: "每股收益EPS(TTM)",
       dataIndex: "eps",
-      width: 100
+      width: "10%"
     },
     {
       title: "行业",
       dataIndex: "industry",
-      width: 100
+      width: "10%"
     },
     {
       title: "PE(TTM)",
       dataIndex: "pe",
       sorter: (a, b) => a.pe - b.pe,
       sortDirections: ["descend", "ascend"],
-      width: 100
+      width: "10%"
     },
     {
       title: "ROE(摊薄)",
       dataIndex: "ROE",
       sorter: (a, b) => a.ROE - b.ROE,
       sortDirections: ["descend", "ascend"],
-      width: 100
+      width: "10%"
     },
     {
       title: "ROE(加权平均)",
       dataIndex: "ROEW",
       sorter: (a, b) => a.ROEW - b.ROEW,
       sortDirections: ["descend", "ascend"],
-      width: 100
+      width: "10%"
     }
   ];
 
@@ -91,6 +99,7 @@ export default class StockList extends React.PureComponent {
   renderTable = (industry, stocks) => {
     return (
       <Table
+        bordered
         columns={this.columns}
         dataSource={stocks}
         pagination={false}
