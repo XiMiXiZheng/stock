@@ -1,6 +1,6 @@
 import React from "react";
 import { Tabs, Table } from "antd";
-import jsonResponse from "./json/20190711.json";
+import jsonResponse from "./json/20190801.json";
 import { groupBy } from "lodash";
 
 export default class StockList extends React.PureComponent {
